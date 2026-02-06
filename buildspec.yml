@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Nothing to install for simple static HTML"
+
+  build:
+    commands:
+      - echo "Starting build phase..."
+
+  post_build:
+    commands:
+      - echo "Build completed. Packaging artifacts."
+
+artifacts:
+  files:
+    - 'index.html'
