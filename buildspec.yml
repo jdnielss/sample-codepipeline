@@ -26,7 +26,15 @@ phases:
       - docker push $REPO_URL:latest
       - docker push $REPO_URL:$IMAGE_TAG
       - echo Writing image definitions file...
-      - echo "[{\"name\":\"$CONTAINER_NAME\",\"imageUri\":\"$REPO_URL:$IMAGE_TAG\"}]" > imagedefinitions.json
+      - |
+        cat <<EOF > imagedefinitions.json
+        [
+          {
+            "name": "$CONTAINER_NAME",
+            "imageUri": "$REPO_URL:$IMAGE_TAG"
+          }
+        ]
+        EOF
       - cat imagedefinitions.json
 artifacts:
     files: imagedefinitions.json
